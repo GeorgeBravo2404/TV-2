@@ -6,7 +6,7 @@ const path = require('path');
 function actualizarTodo() {
   try {
     console.log('🚀 Ejecutando extracción...');
-    execSync('node extraer.js', { stdio: 'inherit' });
+    execSync('node extractor.js', { stdio: 'inherit' });
 
     console.log('📤 Subiendo a GitHub...');
     execSync('git add .', { stdio: 'inherit' });

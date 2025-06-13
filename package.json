@@ -2,7 +2,7 @@
   "name": "iptv-extractor",
   "version": "1.0.0",
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "extract": "node extractor.js",
     "update": "git add . && git commit -m 'Auto update m3u8' && git push"
   },

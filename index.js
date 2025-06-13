@@ -1,22 +1,26 @@
-// index.js
+const { execSync } = require('child_process');
 const cron = require('node-cron');
-const { extraerTodosLosM3U8 } = require('./extraer');
-const { exec } = require('child_process');
+const path = require('path');
 
-// Ejecutar al iniciar
-extraerTodosLosM3U8();
+// Ejecutar extracción y subir a GitHub
+function actualizarTodo() {
+  try {
+    console.log('🚀 Ejecutando extracción...');
+    execSync('node extraer.js', { stdio: 'inherit' });
 
-// Ejecutar cada hora
-cron.schedule('0 * * * *', () => {
-  console.log('⏰ Ejecutando extracción automática...');
-  extraerTodosLosM3U8();
+    console.log('📤 Subiendo a GitHub...');
+    execSync('git add .', { stdio: 'inherit' });
+    execSync('git commit -m "🔁 Auto update enlaces"', { stdio: 'inherit' });
+    execSync('git push', { stdio: 'inherit' });
 
-  // Subir a GitHub automáticamente
-  exec('npm run update', (err, stdout, stderr) => {
-    if (err) {
-      console.error('❌ Error al subir a GitHub:', stderr);
-    } else {
-      console.log('✅ Subido a GitHub automáticamente');
-    }
-  });
-});
+    console.log('✅ Todo actualizado y subido a GitHub.');
+  } catch (err) {
+    console.error('❌ Error:', err.message);
+  }
+}
+
+// Ejecutar una vez al iniciar
+actualizarTodo();
+
+// Programar cada hora
+cron.schedule('0 * * * *', actualizarTodo);

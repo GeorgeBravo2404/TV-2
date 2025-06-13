@@ -1,8 +1,7 @@
 {
-  "name": "iptv-extractor",
+  "name": "TV-2",
   "version": "1.0.0",
   "scripts": {
-    "install": "npx playwright install --with-deps",
     "start": "node index.js",
     "extract": "node extractor.js",
     "update": "git add . && git commit -m 'Auto update m3u8' && git push"

@@ -1,14 +1,12 @@
 {
-  "name": "TV-2",
+  "name": "iptv-extractor",
   "version": "1.0.0",
   "scripts": {
-    "start": "node index.js",
-    "extract": "node extractor.js",
-    "update": "git add . && git commit -m 'Auto update m3u8' && git push"
+    "start": "node server.js",
+    "extract": "node extractor.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "node-cron": "^4.1.0",
     "playwright": "^1.43.1"
   }
 }

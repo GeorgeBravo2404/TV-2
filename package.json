@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "extract": "node extractor.js",
-    "update-github": "npm run extract && git add . && git commit -m \"Actualización automática\" && git push"
+    "update-github": "npm run git add . && git commit -m \"Actualización automática\" && git push"
   },
   "dependencies": {
     "express": "^4.18.2",
